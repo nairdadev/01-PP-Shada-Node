@@ -7,7 +7,7 @@ var csv = require("../../config/util");
 
 async function getAll(req, res) {
   const ordersOpen = await Ordenes.find({ Delivered: false }).populate("user");
-
+ console.log(ordersOpen)
   const ordersClosed = await Ordenes.find({ Delivered: true }).populate("user");
 
   res.render("admin/ordenes/getAll", {

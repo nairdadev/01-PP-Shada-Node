@@ -2,6 +2,7 @@ const Cart = require('../models/cart');
 const Product = require('../models/product');
 const Order = require('../models/order');
 const Category = require('../models/category');
+const User = require('../models/user');
 const paginateHelper = require('express-handlebars-paginate');
  
 async function home(req, res) {
@@ -139,7 +140,7 @@ async function checkout(req, res) {
  
   let cart = await Cart.findById(req.session.cart._id);
 
-  if (req.user.role === "customer"){
+  if (req.user.role === "seller"){
      customer = req.user.role
   } else {
     customer = ""
@@ -163,20 +164,37 @@ async function checkoutPost(req, res) {
   }
   const cart = await Cart.findById(req.session.cart._id);
  
-      const order = new Order({
-        user: req.user,
-        sigma: req.body.sigma,
-        cart: {
-          totalQty: cart.totalQty,
-          totalCost: cart.totalCost,
-          items: cart.items,
-        },
- 
- 
-      });
+        if(req.body.sigma){
 
+          let user = await User.findOne({sigma: req.body.sigma});
+       
+
+          const order = new Order({
+            user: user,
+            sigma: req.body.sigma,
+            cart: {
+              totalQty: cart.totalQty,
+              totalCost: cart.totalCost,
+              items: cart.items,
+            },
+         });
+    
+         await order.save()  
+        }else{
+          const order = new Order({
+            user: req.user,
+            sigma: req.body.sigma,
+            cart: {
+              totalQty: cart.totalQty,
+              totalCost: cart.totalCost,
+              items: cart.items,
+            },
+         });
+    
+         await order.save()  
+    }
  
-     await order.save()  
+     
  
       
        await Cart.deleteOne({_id: req.session.cart._id});
