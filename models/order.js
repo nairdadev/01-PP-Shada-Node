@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const autoIncrementModelID = require('./counterModel');
 const orderSchema = Schema({
+  id: { type: Number, unique: true, min: 1 },
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -61,17 +62,12 @@ const orderSchema = Schema({
 });
 
 orderSchema.pre('save', function (next) {
- 
-  if (this.isNew) {
-    orderSchema.count().then(res => {
-          this._id = res; 
-          next();
-      });
-  } else {
-      next();
+  if (!this.isNew) {
+    next();
+    return;
   }
-});
 
+  autoIncrementModelID('activities', this, next);
+});
 module.exports = mongoose.model("Order", orderSchema);
  
-
