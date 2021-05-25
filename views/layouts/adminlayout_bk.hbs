@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shada Srl</title>
+
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/animate.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
+  <link href="/css/plugins/slick/slick.css" rel="stylesheet">
+  <link href="/css/plugins/slick/slick-theme.css" rel="stylesheet">
+  <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-latest.js"></script>
+  <script src="/lib/read-excel-file.min.js"> </script>
+
+</head>
+
+<body class="top-navigation">
+
+  <div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+      <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-expand-lg navbar-static-top" role="navigation">
+          <!--<div class="navbar-header">-->
+          <!--<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">-->
+          <!--<i class="fa fa-reorder"></i>-->
+          <!--</button>-->
+
+          <a href="#" class="navbar-brand">Shada Srl</a>
+          
+
+          <!--</div>-->
+          <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav mr-auto">
+ 
+              <li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Productos</a>
+                <ul role="menu" class="dropdown-menu">
+                  
+ 
+                  <li><a href="/admin/products/all">Listado</a></li>
+                  <li><a href="/admin/products/new">Nuevo</a></li>
+                  <li><a href="/admin/products/import">Importar</a></li>
+                  <li><a href="/admin/products/upload">Subir Imagenes</a></li>
+                  <li><a href="/admin/products/viewer">Ver Imagenes</a></li>
+                  
+                  
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Ordenes</a>
+                   <ul role="menu" class="dropdown-menu">
+                  
+                  <li><a href="/admin/orden">Listado</a></li>
+                  <li><a href="">Nuevo</a></li>
+                 
+                  
+                </ul>
+              </li>
+            
+              
+                <li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Categorias</a>
+               <ul role="menu" class="dropdown-menu">
+                  
+                  <li><a href="/admin/category/all">Listado</a></li>
+                  <li><a href="/admin/category/new">Nuevo</a></li>
+     
+                   
+                </ul>
+              </li>
+ 
+                       <li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Clientes</a>
+                             <ul role="menu" class="dropdown-menu">
+                  
+                  <li><a href="">Lista</a></li>
+                  <li><a href="">Nuevo</a></li>
+                  <li><a href="">Importar</a></li>
+                  
+                   
+                </ul>
+              </li>
+                                     <li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Configuraciones</a>
+                             <ul role="menu" class="dropdown-menu">
+                  
+                  <li><a href="">Pto de Venta</a></li>
+                  <li><a href="">Usuarios</a></li>
+             
+                   
+                </ul>
+              </li>
+                                 
+               
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+ 
+               {{# if login }}
+            <li><a href="/shopping-cart"><i class="fa fa-shopping-cart"></i> {{ session.cart.totalQty }}</a></li>
+            <li><a href="/user/profile">Perfil</a></li>
+            {{ else }}
+            <li><a class="dropdown-item" href="/user/signup">Registarse</a></li>
+            <li><a class="dropdown-item" href="/user/signin">Ingresar</a></li>
+          {{/if}}
+              
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+  {{{body}}}
+
+
+  <!-- Mainly scripts -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="/js/inspinia.js"></script>
+  <script src="/js/plugins/pace/pace.min.js"></script>
+
+  <!-- Flot -->
+  <script src="/js/plugins/flot/jquery.flot.js"></script>
+  <script src="/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+  <script src="/js/plugins/flot/jquery.flot.resize.js"></script>
+
+  <!-- ChartJS-->
+  <script src="/js/plugins/chartJs/Chart.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+  <!-- Peity demo -->
+  <script src="/js/demo/peity-demo.js"></script>
+    <!-- FooTable -->
+    <script src="/js/plugins/footable/footable.all.min.js"></script>
+    <script src="/js/plugins/slick/slick.min.js"></script>
+    
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+ 
+
+ 
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+
+   $('.product-images').slick({
+            dots: true
+        });
+    </script>
+<!-- slick carousel-->
+
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<div id="page-wrapper" class="gray-bg">
+
+
+  <div class="wrapper wrapper-content animated fadeInRight">
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox ">
+          <div class="ibox-title">
+            <h5>Datos Personales</h5>
+
+
+          </div>
+          <div class="ibox-content">
+            <form action="/user/edituser/{{user._id}}?_method=PUT" method="POST">
+
+
+              <div class="form-group  row">
+                <label class="col-sm-2 col-form-label">Email</label>
+                <form>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="email" value="{{user.email}}"></div>
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="name" value="{{user.name}}">
+                </div>
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Apellido</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="surname" value="{{user.surname}}">
+                </div>
+              </div>
+              <div class="hr-line-dashed"></div>
+
+              <div class="form-group row"><label class="col-sm-2 col-form-label">Dirección</label>
+
+                <div class="col-sm-10"><input type="text" class="form-control" name="addres" value="{{user.addres}}"></div>
+              </div>
+              <div class="hr-line-dashed"></div>
+              <div class="form-group row"><label class="col-sm-2 col-form-label">Ciudad</label>
+
+                <div class="col-sm-10"><input type="text" class="form-control" name="city" value="{{user.city}}"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group row"><label class="col-sm-2 col-form-label">Código Postal</label>
+
+                  <div class="col-sm-10"><input type="text" class="form-control" name="cp" value="{{user.cp}}"></div>
+                  </div>
+                  <div class="hr-line-dashed"></div>
+                  <div class="form-group row"><label class="col-sm-2 col-form-label">Telefono</label>
+
+                    <div class="col-sm-10"><input type="text" class="form-control" name="tel" value="{{user.tel}}"></div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+                    <button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox ">
+              <div class="ibox-title">
+                <h5>Pedidos Pendientes</h5>
+
+                <div class="ibox-tools">
+                  <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                  <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                    </li>
+                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                    </li>
+                  </ul>
+                  <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <input type="text" class="form-control form-control-sm m-b-xs" id="filter"
+                                   placeholder="Buscar">
+
+                            <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                   <thead>
+                                <tr>
+
+                                    <th>Nro Orden</th>
+                                    <th data-hide="phone">Usuario</th>
+                                    <th data-hide="phone">Monto</th>
+                                    <th data-hide="phone">Fecha Pedido</th>
+                                    <th data-hide="phone" >Fecha modificacion</th>
+                                    <th data-hide="phone">Estado</th>
+                                    <th class="text-right">Acciones</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                            {{# each ordersPendientes }}
+                                 <tr>
+                                    <td>
+                                       {{this.id}}
+                                    </td>
+                                    <td>
+                                        {{this.name}}
+                                    </td>
+                                    <td>
+                                        ${{ this.cart.totalPrice }}
+                                    </td>
+                                    <td>
+                                        {{dateFormat datePedido "DD/MM/YYYY"}}
+                                    </td>
+                                    <td>
+                                         
+                                    </td>
+                                    <td>
+                                        <span class="label label-primary">Pendiente</span>
+                                    </td>
+                                     
+                                </tr>
+                               
+                            {{/each}}
+
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        <ul class="pagination float-right"></ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              </div>
+             <div class="col-lg-12">
+            <div class="ibox ">
+              <div class="ibox-title">
+                <h5>Pedidos Finalizados</h5>
+
+                <div class="ibox-tools">
+                  <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                  <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                    </li>
+                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                    </li>
+                  </ul>
+                  <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <input type="text" class="form-control form-control-sm m-b-xs" id="filter"
+                                   placeholder="Buscar">
+
+                            <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                   <thead>
+                                <tr>
+
+                                    <th>Nro Orden</th>
+                                    <th data-hide="phone">Usuario</th>
+                                    <th data-hide="phone">Monto</th>
+                                    <th data-hide="phone">Fecha Pedido</th>
+                                    <th data-hide="phone" >Fecha Finalización</th>
+                                    <th data-hide="phone">Estado</th>
+                                    <th class="text-right">Acciones</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                            {{# each orders }}
+                                 <tr>
+                                    <td>
+                                       {{this.id}}
+                                    </td>
+                                    <td>
+                                        {{this.name}}
+                                    </td>
+                                    <td>
+                                        ${{ this.cart.totalPrice }}
+                                    </td>
+                                    <td>
+                                      {{dateFormat datePedido "DD/MM/YYYY"}}
+                                        
+                                    </td>
+                                    <td>
+                                       {{dateFormat dateModificacion "DD/MM/YYYY"}}  
+                                    </td>
+                                    <td>
+                                        <span class="label bg-danger">Finalizada</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="btn-group">
+                                            <a class="btn-white btn btn-xs" href="/user/orden/{{this._id}}">Ver Factura</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                               
+                            {{/each}}
+
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        <ul class="pagination float-right"></ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              </div>

@@ -1,0 +1,79 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-4">
+    <h2>Bienvenidos</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Categorias</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <strong> Todos los productos</strong>
+      </li>
+    </ol>
+  </div>
+ 
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+    <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+      {{ successMsg }}
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper wrapper-content">
+
+ 
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+ 
+      <div class="row">
+
+
+        {{# each products }}
+        <div class="col-md-3">
+          <div class="ibox">
+            <div class="ibox-content product-box">
+
+              <div class="product-imitation">
+                <img style="width: 200px; height:200px;" src="/uploads/{{ imagePath }}">
+              </div>
+              <div class="product-desc">
+                <span class="product-price">
+                  {{this.code}}
+                </span>
+
+                <span> {{ this.title }}</span>
+
+                <div class="m-t text-righ">
+                  <form action="/add-to-cart/{{this._id}}" method="POST" autocomplete="off">
+                    <p>Cantidad:</p>
+                    <div class="row">
+                      <div class="col-md-8">   <input class="touchspin1" type="text" value="" name="cantidad"></div>
+                      <button class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-shopping-cart"></i>
+                      </button>
+                  
+                    </div>
+
+             </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        {{/each}}
+
+      </div>
+
+      {{{paginateHelper pagination leftText="Anterior" rightText="Siguiente" currentPage=page }}}
+    </div>
+
+  </div>
+
+</div>

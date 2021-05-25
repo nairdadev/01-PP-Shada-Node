@@ -1,0 +1,123 @@
+ {{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{text}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/each}}
+
+
+
+
+
+
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Nuevo Producto</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Productos</a>
+      </li>
+    
+      <li class="breadcrumb-item active">
+        <strong>Nuevo Producto</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="tabs-container">
+        <ul class="nav nav-tabs">
+          <li><a class="nav-link active" data-toggle="tab" href="#tab-1">Info</a></li>
+          <li><a class="nav-link" data-toggle="tab" href="#tab-2"> Detalle</a></li>
+
+          <li><a class="nav-link" data-toggle="tab" href="#tab-4"> Imagen</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+              <form enctype="multipart/form-data" action="/admin/products/newPost" method="POST">
+                <fieldset>
+                  <label class="col-sm-2 col-form-label">Categoria</label>
+
+                                    <div class="col-sm-10"><select class="form-control m-b" name="category">
+                                        <option>Seleccione</option>
+                                        {{#each categories}}
+                                        <option value="{{_id}}">{{name}}</option>
+                                      {{/each}}
+                                        
+                                    </select>
+
+                  
+                  <label class="col-sm-2 col-form-label">Nombre:</label>
+                  <input type="text" class="form-control" name="title" placeholder="Nombre Producto">
+
+                  <label class="col-sm-2 col-form-label">Descripción:</label>
+                  <input type="text" class="form-control" name="description" placeholder="Descripción">
+                  <label class="col-sm-2 col-form-label">Mostrar en pantalla Principal:</label>
+                  <div class="col-sm-10">
+                    <div><label> <input type="radio" checked="" value="0" id="optionsRadios1" name="index"> No mostrar en pantalla principal
+                                              </label></div>
+                    <div><label> <input type="radio" value="1" id="optionsRadios2" name="index">  Mostrar en pantalla principal
+                                             </label></div>
+                  </div>
+
+                </fieldset>
+
+
+            </div>
+          </div>
+          <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+
+              <fieldset>
+                <label class="col-sm-2 col-form-label">Cantidad:</label>
+                <input type="text" class="form-control" name="quantity" placeholder="Cantidad">
+
+                
+
+                <label class="col-sm-2 col-form-label">Publicar:</label>
+                <div class="col-sm-10">
+                  <div><label> <input type="radio" checked="" value="0" id="optionsPublicar" name="available"> No
+                                              </label></div>
+                  <div><label> <input type="radio" value="1" id="optionPublicar2" name="available">  Si
+                                             </label></div>
+                </div>
+
+
+              </fieldset>
+
+
+            </div>
+          </div>
+
+          <div id="tab-4" class="tab-pane">
+            <div class="panel-body">
+
+              <fieldset>
+                <label class="col-sm-2 col-form-label">Imagen:</label>
+                <input type="file" class="form-control" name="imagePath">
+                <hr>
+
+              </fieldset>
+
+              <button class="btn btn-primary btn-rounded" type="submit">
+   enviar
+   </button>
+   
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

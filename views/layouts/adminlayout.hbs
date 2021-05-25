@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shada Srl | Administrador de Contenido</title>
+
+   <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/animate.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
+  <link href="/css/plugins/slick/slick.css" rel="stylesheet">
+  <link href="/css/plugins/slick/slick-theme.css" rel="stylesheet">
+  <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-latest.js"></script>
+  <script src="/lib/read-excel-file.min.js"> </script>
+   <link href="/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+</head>
+
+<body class="md-skin ">
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="block m-t-xs font-bold">{{user.email}}</span>
+                          
+                        </a>
+                       
+                    </div>
+                    
+                </li>
+                <li>
+                    <a href="/admin"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span> <span class="fa arrow"></span></a>
+                     
+                </li>
+ 
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Productos</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                  <li><a href="/admin/products/all">Listado</a></li>
+                  <li><a href="/admin/products/new">Nuevo</a></li>
+                  <li><a href="/admin/products/import">Importar</a></li>
+                  <li><a href="/admin/products/viewer">Gestionar Imagenes</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/orden"><i class="fa fa-envelope"></i> <span class="nav-label">Ordenes </span></a>
+                  
+                </li>
+               
+                <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Categorias</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/admin/category/all">Listado</a></li>
+                        <li><a href="/admin/category/new">Nuevo</a></li>
+                    </ul>
+                </li>
+
+                    <li>
+                    <a href="/admin/clientes/all"><i class="fa fa-edit"></i> <span class="nav-label">Usuarios</span> </a>
+                    
+                </li>   
+             
+            </ul>
+
+        </div>
+    </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="padding-bottom: 28px">
+         <div>
+           
+          </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm  welcome-message" style="color:  black">Panel de Administracion Shada SRL.</span>
+                </li>
+               
+
+
+                <li>
+                    <a href="/user/logout"  style="color:  black">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+    
+        {{{body}}}
+
+      
+        </div>
+
+  <!-- Mainly scripts -->
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="/js/inspinia.js"></script>
+  <script src="/js/plugins/pace/pace.min.js"></script>
+
+  <!-- Flot -->
+  <script src="/js/plugins/flot/jquery.flot.js"></script>
+  <script src="/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+  <script src="/js/plugins/flot/jquery.flot.resize.js"></script>
+
+  <!-- ChartJS-->
+  <script src="/js/plugins/chartJs/Chart.min.js"></script>
+
+  <!-- Peity -->
+  <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+  <!-- Peity demo -->
+  <script src="/js/demo/peity-demo.js"></script>
+    <!-- FooTable -->
+    <script src="/js/plugins/footable/footable.all.min.js"></script>
+    <script src="/js/plugins/slick/slick.min.js"></script>
+
+
+    <script src="/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+        <script src="/js/plugins/typehead/bootstrap3-typeahead.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+ 
+
+ 
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+
+   $('.product-images').slick({
+            dots: true
+        });
+
+        $(document).ready(function(){
+
+        $(document.body).on("click",".client-link",function(e){
+            e.preventDefault()
+            $(".selected .tab-pane").removeClass('active');
+            $($(this).attr('href')).addClass("active");
+        });
+
+    });
+
+
+          $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+
+
+
+var campos_max  = 10;   //max de 10 campos
+
+        var x = 0;
+        $('#add_field').click (function(e) {
+                e.preventDefault();     
+                if (x < campos_max) {
+                        $('#listas').append('<div>\
+                                <input type="text" name="campo[]">\
+                                <a href="#" class="remover_campo">Remover</a>\
+                                </div>');
+                        x++;
+                }
+        });
+        // Remover o div anterior
+        $('#listas').on("click",".remover_campo",function(e) {
+                e.preventDefault();
+                $(this).parent('td').parent('div').remove();
+                x--;
+        });
+    
+
+    
+    </script>
+<!-- slick carousel-->
+
+ 
+
+</body>
+
+</html>

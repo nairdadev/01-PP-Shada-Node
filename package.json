@@ -1,0 +1,39 @@
+{
+  "name": "shopping-cart",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon start"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-handlebars": "^3.0.0",
+    "express-handlebars-paginate": "^1.0.3",
+    "express-paginatorjs": "^1.0.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.1.2",
+    "handlebars-dateformat": "^1.1.1",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "json2csv": "^5.0.5",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.0.17",
+    "morgan": "~1.9.0",
+    "multer": "^1.4.2",
+    "nodemon": "^1.17.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "read-excel-file": "^4.0.5"
+  },
+  "devDependencies": {
+    "jslint": "^0.12.0"
+  }
+}

@@ -1,0 +1,74 @@
+ {{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{text}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/each}}
+ 
+
+  
+  <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>Categoria</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Categoria</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>Nueva Categoria</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    
+                </div>
+            </div>
+<div class="row m-t">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Nueva Categoría</small></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                             <form action="/admin/category/newCategoryPost" method="POST">
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Nombre</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control" name="name"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group row"><label class="col-sm-2 col-form-label">descripción</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"  name="description">  
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group row"><label class="col-sm-2 col-form-label">Imagen</label>
+
+                                    <div class="col-sm-10"><input type="file" class="form-control" name="imagePath"></div>
+                                </div>
+                                 <button type="submit" class="btn btn-primary btn-rounded" >Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+

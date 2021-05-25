@@ -1,0 +1,79 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="ibox">
+        <div class="ibox-title">
+       
+          <h5>Items en el carrito de compra</h5>
+        </div>
+
+    
+        {{# if products }} 
+        {{# each products }}
+ 
+
+        <div class="ibox-content">
+          <div class="table-responsive">
+            <table class="table shoping-cart-table">
+
+              <tbody>
+                <tr>
+                  <td width="90">
+                    <div class="cart-product-imitation">
+                          
+                      <img style = "width: 70px; height:70px;" src="/uploads/{{imagePath }}">
+
+                    </div>
+                  </td>
+                  <td class="desc">
+                    <h3>
+                      <a href="#" class="text-navy">
+                                                {{ title }}
+                                            </a>
+                    </h3>
+                    
+
+                    <div class="m-t-sm">
+
+                      <a href="/remove/{{ _id }}" class="text-muted"><i class="fa fa-trash"></i> Quitar Item</a>
+                    </div>
+                  </td>
+ 
+                  <td width="65">
+                      {{this.qty}}
+                  </td>
+                
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+
+
+        {{/each}} {{ else }}
+        <div class="ibox-content">
+          <div class="table-responsive">
+            No Hay Items
+          </div>
+
+        </div>
+
+        {{/if}}
+      </div>
+      <div class="ibox-content">
+
+        <a href="/checkout" class="btn btn-primary float-right"><i class="fa fa fa-shopping-cart"></i> Enviar Pedido</a>
+        <a href="/" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continuar Comprando</a>
+        <!--<button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>-->
+
+      </div>
+    </div>
+
+ 
+  </div>
+
+
+ 

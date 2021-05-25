@@ -1,0 +1,58 @@
+
+  <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>Productos</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Productos</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>Importar Productos</strong>
+                        </li>
+                    </ol>
+                </div>
+     
+            </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+           <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>¿Cómo usarlo?</h5>
+                        </div>
+                        <div class="ibox-content">
+                           Se debe seleccionar el archivo a importar, se cargará la lista de productos a importar, paso siguiente, presionar guardar.</div>
+                    </div>
+                </div>
+           
+           
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                               <p>Seleccionar archivo:</p>
+                      <input type="file" class="form-control-file" id="subirFile" name="subirFile">
+                  
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+                     
+     <form   action="/admin/products/uploadPost" method="POST">
+             
+      <div class="card-body" id="pagos-importados">
+
+                      </div>
+                    
+        </div>
+
+   <input type="hidden" class="form-control" id="datos" name="datos">
+                    
+
+                        <button type="submit" class="btn btn-primary btn-rounded">guardar</button>  
+                     
+</form>
+
+
+<script>
+  document.getElementById("subirFile").addEventListener("change", {{{ cb }}});
+</script>

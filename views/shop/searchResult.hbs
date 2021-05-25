@@ -1,0 +1,75 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-4">
+    <h2>Busqueda</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Busqueda</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <strong> Resultado de busqueda para: "{{query}}"</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-sm-8">
+
+  </div>
+</div>
+
+
+<div class="wrapper wrapper-content">
+
+  <div class="gray-bg">
+
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+
+
+        {{# each resultado }}
+        <div class="col-md-3">
+          <div class="ibox">
+            <div class="ibox-content product-box">
+
+              <div class="product-imitation">
+                <img style="width: 200px; height:200px;" src="/uploads/{{ imagePath }}">
+              </div>
+              <div class="product-desc">
+                <span class="product-price">
+                                     {{this.code}}
+                                </span>
+
+                <a href="/product/{{this._id}}" class="product-name"> {{ this.title }}</a>
+
+
+
+
+                <div class="m-t text-righ">
+                  <form action="/add-to-cart/{{this._id}}" method="POST" autocomplete="off">
+                    <p>Cantidad:</p>
+                    <div class="row">
+                      <div class="col-md-8"> <input class="touchspin1" type="text" value="" name="cantidad"></div>
+                      <button class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-shopping-cart"></i>
+                      </button>
+
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        {{/each}}
+
+      </div>
+
+      {{{paginateHelper pagination}}}
+
+    </div>
+
+  </div>
+
+</div>

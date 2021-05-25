@@ -1,0 +1,77 @@
+
+  <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>Productos</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Productos</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>Subir imagenes de Productos</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    
+                </div>
+            </div>
+        <div class="wrapper wrapper-content animated fadeIn">
+            
+        
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+ 
+                        <div class="ibox-content">
+
+                           
+                            <form action="#" class="dropzone" id="dropzoneForm">
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                </div>
+                            </form>
+
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+      <script src="/js/plugins/dropzone/dropzone.js"></script>
+          <script>
+    
+        Dropzone.options.dropzoneForm = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            dictDefaultMessage: "<strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)"
+        };
+
+        $(document).ready(function(){
+
+            var editor_one = CodeMirror.fromTextArea(document.getElementById("code1"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            var editor_two = CodeMirror.fromTextArea(document.getElementById("code2"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            var editor_two = CodeMirror.fromTextArea(document.getElementById("code3"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+            var editor_two = CodeMirror.fromTextArea(document.getElementById("code4"), {
+                lineNumbers: true,
+                matchBrackets: true
+            });
+
+
+            $('.custom-file-input').on('change', function() {
+                let fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').addClass("selected").html(fileName);
+            });
+
+       });
+    </script>

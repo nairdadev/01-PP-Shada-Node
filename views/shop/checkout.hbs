@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+    <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+      {{ successMsg }}
+    </div>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="ibox">
+        <div class="ibox-title">
+          <span class="float-right">(<strong>5</strong>) items</span>
+          <h5>Items Compra</h5>
+        </div>
+
+
+        {{#each cart.items }}
+
+
+
+
+        <div class="ibox-content">
+
+
+          <div class="table-responsive">
+            <table class="table shoping-cart-table">
+
+              <tbody>
+                <tr>
+                  <td width="90">
+                    <div class="cart-product-imitation">
+                      <img style="width: 70px; height70px;" src="/uploads/{{imagePath}}" alt="">
+
+                    </div>
+                  </td>
+                  <td class="desc">
+                    <h3>
+                      <a href="#" class="text-navy">
+                                                {{title}}
+                                                
+                                            </a>
+                    </h3>
+
+                      <a href="/remove/{{ _id }}" class="text-muted"><i class="fa fa-trash"></i> Quitar Item</a>
+                  </td>
+
+
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        {{/each}}
+      </div>
+
+
+    </div>
+    <div class="col-md-6">
+
+      <div class="ibox">
+        <div class="ibox-title">
+
+
+          <div class="ibox-content">
+            <form action="/checkout" method="POST">
+              <div class="form-group">
+
+                {{#if customer}}
+                <div class="form-group">
+                  <label for="name">Sigma</label>
+                  <input type="text" id="sigma" name="sigma" class="form-control">
+                </div>
+
+                {{else}}
+
+
+                <div class="form-group">
+                  <label for="name">Email</label>
+                  <input type="text" id="email" name="email" class="form-control" value="{{user.email}}">
+                </div>
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input type="text" id="name" name="name" class="form-control" value="{{user.name}}">
+                </div>
+
+                <div class="form-group">
+                  <label for="card-name">Ciudad</label>
+                  <input type="text" id="card-name" name="city" class="form-control" value="{{user.city}}">
+                </div>
+                <div class="form-group">
+                  <label for="address">Dirección</label>
+                  <input type="text" id="address" name="addres" class="form-control" required value="{{user.addres}}">
+                </div>
+                <div class="form-group">
+                  <label for="card-number">Código Postal</label>
+                  <input type="text" id="card-number" name="cp" class="form-control" value="{{user.cp}}">
+                </div>
+                <div class="form-group">
+                  <label for="card-number">Telefono</label>
+                  <input type="text" id="card-number" name="tel" class="form-control" value="{{user.tel}}">
+                </div>
+                {{/if}}
+              </div>
+
+              <div class="form-group">
+                <!--<button type="submit">Confirmar Pedido</button>-->
+                <button type="submit" class="btn btn-success"><i class="fa fa fa-check"></i> Confirmar Pedido</button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>

@@ -1,0 +1,201 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Orden</h2>
+
+    </div>
+
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+
+  <div class="col-lg-4">
+                <div class="contact-box">
+                    <a class="row"  >
+                    <div class="col-3">
+      
+                    </div>
+                    <div class="col-8">
+                        <h3>Datos de Contacto</h3>
+                        <h3><i class="fa fa-male"></i> <strong>{{orders.user.name}}</strong></h3>
+                        <p><i class="fa fa-book"></i> {{orders.user.tel}}</p>
+                        <hr>
+                        <address>
+                            <strong><i class="fa fa-address-book"></i> {{orders.user.email}}</strong><br>
+                            
+                            <abbr title="Phone">Sigma:</abbr> {{orders.user.sigma}}
+                        </address>
+                    </div>
+                        </a>
+                </div>
+            </div>
+
+ 
+
+    <div class="col-lg-12">
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Productos</h5>
+
+
+                    </div>
+                    <div class="ibox-content">
+
+
+                        <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                            <thead>
+                                <tr>
+
+                                    <th>Código Producto</th>
+                                    <th data-hide="phone">Producto</th>
+
+                                    <th data-hide="phone">Cantidad</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {{#each orders.cart.items}}
+
+                                <tr>
+                                    <td>
+                                        {{code}}
+                                    </td>
+                                    <td>
+                                        {{title}}
+                                    </td>
+
+                                    <td>
+
+                                        {{qty}}
+
+                                    </td>
+
+
+                                </tr>
+
+                                {{/each}}
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        <ul class="pagination float-right"></ul>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">EDITAR ORDEN</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Orden</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/admin/orden/update/{{orders._id}}" id="cargador">
+                            <div>
+                                <div class="row">
+                                    <div>
+                                        {{#each orders.cart.items}}
+                                        <div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="recipient-name" class="col-form-label">Código
+                                                        Producto:</label>
+                                                    <input type="text" name="productos[{{@index}}][code]"
+                                                        class="form-control" id="recipient-name" value="{{code}}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="message-text" class="col-form-label">Cantidad:</label>
+                                                    <input type="text" name="productos[{{@index}}][qty]"
+                                                        class="form-control" id="recipient-name" value="{{qty}}">
+                                                </div>
+
+                                                <span class="btn btn-succes" style="margin-top: 7%" type="button"
+                                                    onclick="agregar_campo();"><i class="fa fa-plus-square"></i></span>
+
+                                                <span class="btn btn-succes" style="margin-top: 7%" type="button"
+                                                    value='Eliminar' onclick='eliminar_campo(this);'><i
+                                                        class="fa fa-trash"></i></span>
+
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+
+
+                    <button class="btn btn-dark" type="button" onclick="agregar_campo();">Agregar
+                        Más</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                    </form>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+       var a = {{length}} + 3;
+        function addCancion() {
+            a++;
+
+            var div = document.createElement('div');
+            div.innerHTML = '<div  class="cancion_' + a + '"><div class="row mb-2"><div class="col-md-4"> <input class="form-control" type="text" name="productos[' + a + '][code]" ></div><div class="col-md-4"><input  class="form-control" type="text" name="productos[' + a + '][qty]"></div> <div class="col-md-2" style="ml-2"> <input type="button" class="btn btn-success" id="add_cancion()" onClick="addCancion()" value="+" /></div></div></div>';
+            document.getElementById('canciones').appendChild(div); document.getElementById('canciones').appendChild(div);
+        }
+
+        function agregar_campo() {
+           a++;
+            $("#cargador").append('<div><div class="row"><div class="form-group col-md-4"><label for="recipient-name" class="col-form-label">Código Producto:</label> <input type="text" name="productos[' + a + '][code]" class="form-control" id="recipient-name"></div><div class="form-group col-md-4"><label for="message-text" class="col-form-label">Cantidad:</label><input type="text" name="productos['+ a +'][qty]" class="form-control" id="recipient-name"></div><br><span class="btn btn-succes" style="margin-top: 7%" type="button" onclick="agregar_campo();"><i class="fa fa-plus-square"></i></span> <span style="margin-top: 7%" class="btn btn-succes" type="button" value="Eliminar" onclick="eliminar_campo(this);"><i class="fa fa-trash"></i></span></div>');
+        }
+        function eliminar_campo(campos) {
+            $(campos).parent().remove();
+        }
+
+    </script>

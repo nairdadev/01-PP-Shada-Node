@@ -1,0 +1,83 @@
+
+
+         <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>editar producto: {{product.title}}</small></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                       
+ <form action="/admin/products/update/{{product._id}}?_method=PUT" method="POST">
+           <label class="col-sm-2 col-form-label">Categoría:</label>
+            
+                 <div class="col-sm-12">
+                     <select class="form-control m-b" name="category">
+                                        <option value="{{product.category._id}}">{{product.category.name}}</option>
+                                        {{#each categories}}
+                                        <option value="{{_id}}">{{name}}</option>
+                                        {{/each}}
+                                        
+                                    </select>
+                                    </div>
+           <label class="col-sm-2 col-form-label">Nombre:</label>
+                  <input type="text" class="form-control" name="title" value="{{product.title}}">
+
+                  <label class="col-sm-2 col-form-label">Descripción:</label>
+                  <input type="text" class="form-control" name="description" value="{{product.description}}">
+                  <label class="col-sm-12 col-form-label">Mostrar en pantalla Principal:</label>
+                  <div class="col-sm-10">
+                    <div><label> <input type="radio"  value="0" id="optionsRadios1" name="index"> No mostrar en pantalla principal
+                                              </label></div>
+                    <div><label> <input type="radio" checked="" value="1" id="optionsRadios2" name="index">  Mostrar en pantalla principal
+                                             </label></div>
+                  </div>
+
+                   <label class="col-sm-2 col-form-label">Cantidad:</label>
+                <input type="text" class="form-control" name="quantity" value="{{product.quantity}}">
+
+                <label class="col-sm-2 col-form-label">Precio:</label>
+                <input type="text" class="form-control" name="price" value="{{product.price}}">
+
+                <label class="col-sm-2 col-form-label">Publicar:</label>
+                <div class="col-sm-10">
+                  <div><label> <input type="radio"  value="0" id="optionsPublicar" name="available"> No
+                                              </label></div>
+                  <div><label> <input type="radio" checked="" value="1" id="optionPublicar2" name="available">  Si
+                                             </label></div>
+                </div>
+                   <label class="col-sm-2 col-form-label">Imagen:</label>
+                <input type="file" class="form-control" value="{{product.imagePath}}">
+       
+
+       <button type="submit" class="btn btn-primary btn-rounded m-t">Guardar</button>
+      </div>
+    
+
+        
+       
+       </form>
+
+
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>

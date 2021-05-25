@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shada Srl</title>
+
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/animate.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/plugins/footable/footable.core.css" rel="stylesheet">
+  <link href="/css/plugins/slick/slick.css" rel="stylesheet">
+  <link href="/css/plugins/slick/slick-theme.css" rel="stylesheet">
+
+</head>
+
+<body class="top-navigation">
+
+  <div id="wrapper">
+    <div id="page-wrapper" class="white-bg">
+      <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-expand-lg navbar-static-top" role="navigation">
+          <!--<div class="navbar-header">-->
+          <!--<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">-->
+          <!--<i class="fa fa-reorder"></i>-->
+          <!--</button>-->
+
+          <a href="/" class="navbar-brand"><img src="img/logo_grande.png" width="100px"></a>
+
+
+          <!--</div>-->
+          <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav mr-auto">
+
+              <li class="dropdown">
+                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías</a>
+                <ul role="menu" class="dropdown-menu">
+
+
+                  {{#each categories}}
+
+                  <li><a href="/category/{{id}}/">{{name}}</a></li>
+
+                  {{/each}}
+
+
+
+
+                </ul>
+
+              </li>
+              <li>
+                <a aria-expanded="false" role="button" href="#" data-toggle="dropdown"> Quienes Somos</a>
+
+              </li>
+              <li>
+                <a aria-expanded="false" role="button" href="#" data-toggle="dropdown"> Contacto</a>
+
+              </li>
+
+            </ul>
+
+
+            <ul class="nav navbar-top-links navbar-right">
+              <li class="pr-3">
+                <form action="/search" method="GET" class="form-inline">
+                  <input class="form-control mr-sm-2" name="title" type="title" placeholder="Ingrese busqueda" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+              </li>
+              <li> {{user.email }} </li>
+              {{# if login }}
+
+              <!--  {{# if session}} -->
+              <li><a href="/shopping-cart"><i class="fa fa-shopping-cart"></i> {{ session.cart.totalQty }}</a></li>
+              <li><a href="/user/profile">Perfil</a></li>
+              <li><a href="/user/logout"><i class="fa fa-sign-out"></i> Log out </a></li>
+              <!--{{else}}
+              <li><a href="/shopping-cart"><i class="fa fa-shopping-cart"></i>0</a></li>
+            
+
+              {{/if}}
+-->
+              {{ else }}
+
+              
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+ Ingresar
+</button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <img src="/img/logo_grande.png" width ="300" style="margin-left: 10%;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+                       <form class="m-t" action="/user/signin" method="post">
+                
+              <div class="form-group">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Username" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+                </div>
+              
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+               
+            </form>
+                    </div>
+                 
+                  </div>
+                </div>
+              </div>
+
+              {{/if}}
+
+            </ul>
+          </div>
+        </nav>
+
+
+
+
+
+      </div>
+
+      {{{body}}}
+
+
+      <!-- Mainly scripts -->
+      <script src="/js/jquery-3.1.1.min.js"></script>
+      <script src="/js/popper.min.js"></script>
+      <script src="/js/bootstrap.js"></script>
+      <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+      <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+      <!-- Custom and plugin javascript -->
+      <script src="/js/inspinia.js"></script>
+      <script src="/js/plugins/pace/pace.min.js"></script>
+
+      <!-- Flot -->
+      <script src="/js/plugins/flot/jquery.flot.js"></script>
+      <script src="/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+      <script src="/js/plugins/flot/jquery.flot.resize.js"></script>
+
+      <!-- ChartJS-->
+      <script src="/js/plugins/chartJs/Chart.min.js"></script>
+
+      <!-- Peity -->
+      <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+      <!-- Peity demo -->
+      <script src="/js/demo/peity-demo.js"></script>
+      <!-- FooTable -->
+      <script src="/js/plugins/footable/footable.all.min.js"></script>
+      <script src="/js/plugins/slick/slick.min.js"></script>
+
+      <!-- Custom and plugin javascript -->
+      <script src="/js/inspinia.js"></script>
+      <script src="/js/plugins/pace/pace.min.js"></script>
+      <script src="/js/plugins/slick/slick.min.js"></script>
+      <script src="/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+
+
+      <!-- Page-Level Scripts -->
+      <script>
+        $(document).ready(function() {
+
+          $('.footable').footable();
+          $('.footable2').footable();
+
+        });
+
+        $('.product-images').slick({
+          dots: true
+        });
+
+
+        $('.slick_demo_1').slick({
+          dots: true
+        });
+        $(".touchspin1").TouchSpin({
+          buttondown_class: 'btn btn-white',
+          buttonup_class: 'btn btn-white'
+        });
+      </script>
+      <!-- slick carousel-->
+
+
+
+</body>
+
+</html>

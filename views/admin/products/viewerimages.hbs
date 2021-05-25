@@ -1,0 +1,142 @@
+    <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-9">
+                    <h2>Administrador de Archivos </h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Productos</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            Administrador de Archivos
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        <div class="wrapper wrapper-content">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox ">
+                        <div class="ibox-content">
+                            <div class="file-manager">
+                                <h5>Mostrar:</h5>
+                                <a href="#" class="file-control active">Imagenes</a>
+                                <div class="hr-line-dashed"></div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">Subir Images</button>
+                                <div class="hr-line-dashed"></div>
+                                <h5>Carpetas</h5>
+                                <ul class="folder-list" style="padding: 0">
+                                    <li><a href=""><i class="fa fa-folder"></i> Productos</a></li>
+                    
+                                </ul>
+                     
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 animated fadeInRight">
+                    <div class="row">
+                        <div class="col-lg-12">
+                {{#each archivos}}
+  
+
+                          
+         
+                            <div class="file-box">
+                                <div class="file">
+                                    <a href="#">
+                                        <span class="corner"></span>
+
+                                        <div class="image">
+                                            <img alt="image" class="img-fluid" src="/uploads/{{this}}">
+                                        </div>
+                                        <div class="file-name">
+                                            {{this}}
+                                            <br/>
+                                          
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+                         {{/each}}   
+
+                        </div>
+                    </div>
+                    </div>
+             
+              
+      
+             
+              
+              </div>
+            <div style="float: right;">
+              
+          
+                        {{{paginateHelper  pagination leftText="Anterior" rightText="Siguiente" currentPage=page   }}}       
+          </div>
+          </div> 
+
+                        <div class="text-center">
+          
+                             
+                            </div>
+                            <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Subir Imagenes</h4>
+                                            <small class="font-bold">Seleccionar cantidad de imagenes.</small>
+                                        </div>
+                                        <div class="modal-body">
+                                          
+                                           <form action="/admin/products/viewer" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="example-input-file"> </label>
+              <input type="file" name="multi-files" multiple id="input-multi-files" class="form-control-file border"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Subir</button>
+          </form>
+
+          <div class="col-md-12">
+         <div class="preview-images"></div>
+        </div>
+       
+   
+        </div>
+      </div>
+   
+      
+    </div>
+                                        </div>
+
+                                      
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+      $(document).ready(function() {
+        let imagesPreview = function(input, placeToInsertImagePreview) {
+          if (input.files) {
+            let filesAmount = input.files.length;
+            for (i = 0; i < filesAmount; i++) {
+              let reader = new FileReader();
+              reader.onload = function(event) {
+                $($.parseHTML("<img style='width:100px;' class='mt-2'>"))
+                  .attr("src", event.target.result)
+                  .appendTo(placeToInsertImagePreview);
+              };
+              reader.readAsDataURL(input.files[i]);
+            }
+          }
+        };
+        $("#input-multi-files").on("change", function() {
+          imagesPreview(this, "div.preview-images");
+        });
+      });
+    </script>

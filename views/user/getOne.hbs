@@ -1,0 +1,105 @@
+    <div class="row wrapper border-bottom white-bg page-heading">
+                
+  {{# each orders }}
+       
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="ibox-content p-xl">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>De:</h5>
+                                    <address>
+                                        <strong>Shada Srl.</strong><br>
+                                        Pto Venta<br>
+                                        Dirección<br>
+                                        <abbr title="Phone">P:</abbr> telefono
+                                    </address>
+                                </div>
+
+                                <div class="col-sm-6 text-right">
+                                    <h4>Factura Nro:</h4>
+                                    <h4 class="text-navy">{{this._id}}</h4>
+                                    <span>Para:</span>
+                                    <address>
+                                        <strong>{{this.name}}.</strong><br>
+                                        {{this.addres}}<br>
+                                        {{this.city}}<br>
+                                        <abbr title="Phone">P:</abbr> 
+                                    </address>
+                                    <p>
+                                        <span><strong>Fecha pedido: {{dateFormat datePedido "DD/MM/YYYY"}}</strong> </span><br/>
+                                        <span><strong>Fecha Finalización: {{dateFormat dateModificacion "DD/MM/YYYY"}}  </strong></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive m-t">
+                                <table class="table invoice-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                        <th>Tax</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                            {{#each items}}
+                                          
+                                        
+                                    <tr>
+                                        <td><div><strong>{{item.title}}</strong></div>
+                                            
+                                        <td>{{qty}}</td>
+                                        <td>${{price}}</td>
+                                        <td>$0</td>
+                                        <td>${{price}}</td>
+                                    </tr>
+                                  {{/each}}
+
+                                    </tbody>
+                                </table>
+                            </div><!-- /table-responsive -->
+
+                            <table class="table invoice-total">
+                                <tbody>
+                                <tr>
+                                    <td><strong>Sub Total :</strong></td>
+                                    <td>${{ this.cart.totalPrice }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Impuestos :</strong></td>
+                                    <td>$0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>TOTAL :</strong></td>
+                                    <td>${{ this.cart.totalPrice }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-right">
+                                   <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Imprimir Factura </a>
+                            </div>
+
+                          
+                        </div>
+                  
+                 
+                </div>
+             
+            </div>
+            
+     
+              
+                               
+                                       
+                                 
+                                  
+                            
+                                         
+                               
+                                         
+                             
+                               
+                            {{/each}}
