@@ -7,6 +7,7 @@
     "dev": "nodemon start"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.4",
     "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
@@ -31,7 +32,8 @@
     "nodemon": "^1.17.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "read-excel-file": "^4.0.5"
+    "read-excel-file": "^4.0.5",
+    "sendgrid": "^5.2.3"
   },
   "devDependencies": {
     "jslint": "^0.12.0"

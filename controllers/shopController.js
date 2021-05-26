@@ -5,6 +5,9 @@ const Category = require('../models/category');
 const User = require('../models/user');
 const paginateHelper = require('express-handlebars-paginate');
  
+
+
+
 async function home(req, res) {
   let successMsg = req.flash('success')[0];
   let categories = await Category.find({});
@@ -133,7 +136,7 @@ async function shoppingCart(req, res) {
 
 async function checkout(req, res) {
   const errorMsg = req.flash("error")[0];
-  console.log(req.user.role)
+ 
   if (!req.session.cart) {
     return res.redirect("/shopping-cart");
   }
@@ -192,6 +195,41 @@ async function checkoutPost(req, res) {
          });
     
          await order.save()  
+
+ 
+
+        const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey("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");
+const msg = {
+  to: 'hernanpampa@gmail.com',
+  cc:'adrian.cano.g@gmail.com',
+  from: 'adrian.cano.g@gmail.com', // Use the email address or domain you verified above
+  subject: 'Nueva orden',
+ 
+  html: `<strong>${order}</strong>`,
+};
+//ES6
+sgMail
+  .send(msg)
+  .then(() => {}, error => {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  });
+//ES8
+(async () => {
+  try {
+    await sgMail.send(msg);
+  } catch (error) {
+    console.error(error);
+
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  }
+})();
     }
  
      
@@ -241,7 +279,7 @@ async function removeProduct(req, res) {
     }
     res.redirect(req.headers.referer);
   } catch (err) {
-    console.log(err.message);
+   
     res.redirect("/");
 }
 }
