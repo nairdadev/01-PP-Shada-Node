@@ -95,7 +95,7 @@ async function addCart(req, res) {
     req.flash("success", "Agregado al carrito");
     res.redirect(req.headers.referer);
   } catch (err) {
-    console.log(err.message);
+    req.flash("success",  "Agregado al carrito");
     res.redirect("/");
   }
 }
@@ -199,7 +199,7 @@ async function checkoutPost(req, res) {
       
        await Cart.deleteOne({_id: req.session.cart._id});
     
-        req.flash("success", "Successfully purchased");
+        req.flash("success", "Pedido enviado correctamente");
         req.session.cart = null;
         res.redirect("/");
     

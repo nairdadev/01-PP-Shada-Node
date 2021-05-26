@@ -53,7 +53,7 @@ router.get('/signin', (req, res, next) => {
 
  
 router.post('/signin', passport.authenticate('local.signin', {
-  failureRedirect: '/user/signin',
+  failureRedirect: '/',
   failureFlash: true
 }), (req, res, next) => {
   if (req.session.oldUrl) {

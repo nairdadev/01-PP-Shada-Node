@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt')
 
 async function signupPost(req, res) {
   let a = req.body;
-  console.log("asdasd",a)
+ 
   let user = new User({
     sigma: req.body.sigma,
     user: req.user,
