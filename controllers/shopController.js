@@ -205,8 +205,50 @@ const msg = {
   cc:'adrian.cano.g@gmail.com',
   from: 'adrian.cano.g@gmail.com', // Use the email address or domain you verified above
   subject: 'Nueva orden',
+  html: `
+   <div class="row">
+  <div class="col-lg-12">
+      <div class="wrapper wrapper-content animated fadeInRight">
+          <div class="ibox-content p-xl">
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <h5>De:</h5>
+                          <address>
+                              <strong>${order.user.name}</strong><br>
+                              
+                              ${order.user.email}<br>
+                              <abbr title="Phone">P:</abbr> ${order.user.tel}
+                          </address>
+                      </div>
+
  
-  html: `<strong>${order}</strong>`,
+                  </div>
+
+                  <div class="table-responsive m-t">
+                      <table class="table invoice-table">
+                          <thead>
+                          <tr>
+                              <th>Item</th>
+                              <th>Cantidad</th>
+                            
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                             
+                              
+                          </tr>
+                         
+
+                          </tbody>
+                      </table>
+                  </div><!-- /table-responsive -->
+
+                 
+              </div>
+      </div>
+  </div>
+</div>`,
 };
 //ES6
 sgMail
