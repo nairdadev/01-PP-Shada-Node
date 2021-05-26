@@ -16,7 +16,7 @@ const MongoStore = require('connect-mongo')(session);
 const http = require('http');
 const methodOverride = require('method-override');
 const paginateHelper = require('express-handlebars-paginate');
-
+require('dotenv').config();
 // Import the passport configuration
 require('./config/passport');
 require('./database');
