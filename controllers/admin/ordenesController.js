@@ -7,7 +7,7 @@ var csv = require("../../config/util");
 
 async function getAll(req, res) {
   const ordersOpen = await Ordenes.find({ Delivered: false }).populate("user");
- console.log(ordersOpen)
+  
   const ordersClosed = await Ordenes.find({ Delivered: true }).populate("user");
 
   res.render("admin/ordenes/getAll", {
@@ -32,7 +32,7 @@ async function getOneOrder(req, res) {
 
   let usuario = await User.findById(orden.user);
 
-  console.log(orden, usuario)
+   
 
   res.render("admin/ordenes/getOne", {
     user: usuario,
@@ -55,8 +55,7 @@ async function getOrdenPedido(req, res) {
    
 
   let length = orders.cart.items.length;
-
-  console.log("length", length);
+ 
   res.render("admin/ordenes/getOrdenPedido", {
     orders: orders,
     length: length,
@@ -109,7 +108,7 @@ async function altOrden(req, res) {
 
   let body = req.body.productos || [];
 
-  console.log("altaOrden", body);
+ 
 
   const reducer = (prev, item, index, array) => {
     prev[item.id] = {
@@ -133,10 +132,9 @@ async function altOrden(req, res) {
 async function download(req, res) {
   let orders = await Ordenes.findOne({ _id: req.params.id }).populate("user");
 
-  console.log(orders)
-
+ 
   let items = orders.cart.items;
-  console.log(items);
+ 
   let data = [];
   for (let i = 0; i < items.length; i++) {
     datos = {
@@ -189,8 +187,7 @@ async function updateOrden(req, res) {
   order.cart.totalQty = 12;
 
   let prod = req.body.productos;
-  console.log(prod);
-
+  
   for (let i = 0; i < prod.length; i++) {
     let prods = await Product.findOne({ code: prod[i].code });
 

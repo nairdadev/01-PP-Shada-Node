@@ -32,7 +32,7 @@ async function signupPost(req, res) {
 
   });
   
-  console.log(user);
+ 
    await user.save()   
     res.redirect('/admin/clientes/all');
  
