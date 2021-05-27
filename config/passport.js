@@ -40,7 +40,7 @@ passport.use("local.signup", new LocalStrategy({
             return done(err);
         }
         if (user) {
-            return done(null, false, {message: 'Email already in use.'});
+            return done(null, false, {message: 'Email en uso.'});
         }
         let newUser = new User();
         newUser.email = email;
@@ -60,8 +60,8 @@ passport.use("local.signin", new LocalStrategy({
     passReqToCallback: true
 }, (req, email, password, done) => {
       // Perform basic validation
-      req.checkBody('email', 'Invalid email').notEmpty().isEmail();
-      req.checkBody('password', 'Invalid password').notEmpty();
+      req.checkBody('email', 'Email Incorrecto').notEmpty().isEmail();
+      req.checkBody('password', 'Password Incorrecto').notEmpty();
       let errors = req.validationErrors();
 
       if (errors) {
@@ -77,10 +77,10 @@ passport.use("local.signin", new LocalStrategy({
             return done(err);
         }
         if (!user) {
-            return done(null, false, {message: 'No user found.'});
+            return done(null, false, {message: 'No se encuentra el usuario.'});
         }
         if (!user.validPassword(password)) {
-            return done(null, false, {message: 'Wrong password.'});
+            return done(null, false, {message: 'Password Incorrecto.'});
         }
 
         return done(null, user);
