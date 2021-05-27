@@ -137,8 +137,8 @@ async function checkout(req, res) {
 
   let cart = await Cart.findById(req.session.cart._id);
 
-  if (req.user.role === "seller") {
-    customer = req.user.role;
+  if (req.user.role === "seller"  || req.user.role === "admin") {
+    customer = "seller";
     
   } else {
     customer = "";
