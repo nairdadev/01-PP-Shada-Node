@@ -139,15 +139,20 @@ async function checkout(req, res) {
 
   if (req.user.role === "seller") {
     customer = req.user.role;
+    
   } else {
     customer = "";
   }
+
+  let clients = await User.find({'role': 'User'});
+ 
 
   const errMsg = req.flash("error")[0];
   res.render("shop/checkout", {
     cart: cart,
     customer: customer,
     errorMsg,
+    clients: clients,
     pageName: "Checkout",
     user: req.user,
   });

@@ -75,8 +75,15 @@
                 {{#if customer}}
                 <div class="form-group">
                   <label for="name">Sigma</label>
-                  <input type="text" id="sigma" name="sigma" class="form-control">
+                  <select class="form-control m-b" id="sigma"  name="sigma">
+                                      {{#each clients}}
+                                        <option  value="{{sigma}}">{{name}}</option>
+                                       {{/each}}
+                                    </select>
+                 
                 </div>
+
+                
 
                 {{else}}
 
