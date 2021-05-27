@@ -47,6 +47,7 @@ async function getOneOrder(req, res) {
 }
 
 async function getOrdenPedido(req, res) {
+
   var orders = await Ordenes.findById(req.params.id).populate("user");
 
   var s = orders.sigma;
@@ -108,7 +109,7 @@ async function altOrden(req, res) {
 
   let body = req.body.productos || [];
 
- 
+ console.log("asdasd", body)
 
   const reducer = (prev, item, index, array) => {
     prev[item.id] = {
@@ -182,29 +183,46 @@ async function download(req, res) {
 }
 
 async function updateOrden(req, res) {
+
   let order = await Ordenes.findById(req.params.id);
   order.cart.items = [];
   order.cart.totalQty = 12;
 
   let prod = req.body.productos;
   
+
+
+
   for (let i = 0; i < prod.length; i++) {
     let prods = await Product.findOne({ code: prod[i].code });
+ 
+    if(!prods){
 
+  
+      error = `   <div class="alert alert-danger"> No se encuentra/n en catalogo los códigos: ${prod[i].code} </div>` 
+      req.session['success'] = error;
+ 
+    }else{ 
+     
     let hola = {
-      title: prods.title,
+      title: prods.title, 
       qty: prod[i].qty,
       code: prods.code,
       productId: prods._id,
     };
  
     order.cart.items.push(hola);
+    await Ordenes.findByIdAndUpdate({ _id: req.params.id }, order, {
+      upsert: true,
+    });
+    req.session['success'] = '';
   }
+ 
+}
 
-  await Ordenes.findByIdAndUpdate({ _id: req.params.id }, order, {
-    upsert: true,
-  });
-  res.redirect("/admin/ordenpedido/" + req.params.id);
+res.redirect("/admin/ordenpedido/" + req.params.id);
+ 
+
 }
 
 module.exports = {
