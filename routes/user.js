@@ -61,12 +61,17 @@ router.post('/signin', passport.authenticate('local.signin', {
     req.session.oldUrl = null;
     res.redirect(oldUrl);
   } else {
-    if(req.user.role == "admin"){
-      res.redirect('/admin');
+    if(req.user.state === "inactivo"){
+      res.redirect('/')
+      req.session = '';
     }else{
-      res.redirect('/');
-    }  
-  }
+      if(req.user.role == "admin"){
+        res.redirect('/admin');
+      }else{
+        res.redirect('/');
+      }  
+    }
+    }
 });
 
 module.exports = router;

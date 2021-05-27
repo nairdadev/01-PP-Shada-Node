@@ -13,7 +13,8 @@ const schema = new Schema({
     city: {type: String, required: false},
     cp: {type: String, required: false},
     tel: {type: String, required: false},
-    role: {type: String, default: "customer"}
+    role: {type: String, default: "User"},
+    state: {type: String, default: "activo"}
 });
 
 schema.methods.encryptPassword = function(password) {

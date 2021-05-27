@@ -197,7 +197,6 @@ async function updateOrden(req, res) {
     let prods = await Product.findOne({ code: prod[i].code });
  
     if(!prods){
-
   
       error = `   <div class="alert alert-danger"> No se encuentra/n en catalogo los códigos: ${prod[i].code} </div>` 
       req.session['success'] = error;

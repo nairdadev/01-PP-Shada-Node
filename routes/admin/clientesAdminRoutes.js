@@ -5,6 +5,7 @@ const clientesAdminController = require('../../controllers/admin/clientesControl
  
 router.get('/admin/clientes/all',isAdmin, clientesAdminController.getAll);
 router.post('/admin/clientes/nuevo',isAdmin, clientesAdminController.signupPost);
+router.put('/admin/clientes/update/:id', clientesAdminController.updateClient );
  
 function isAdmin(req, res, next) {
     if (req.user.isAdmin()) {

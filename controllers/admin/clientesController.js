@@ -15,7 +15,21 @@ async function getAll(req, res){
 }
 
  
+async function updateClient(req, res){
+ const {
+    sigma,
+    email,
+    name,
+    state
+  } = req.body;
+  await User.findByIdAndUpdate(req.params.id, {sigma, email, name, state},{new: true});
+  req.flash('success_msg', 'Usuario Actualizado');
+  res.redirect('/admin/clientes/all');
+  
 
+  console.log(req.body)
+
+}
 
 async function signupPost(req, res) {
   let a = req.body;
@@ -40,5 +54,6 @@ async function signupPost(req, res) {
 
 module.exports = {
     getAll,
-    signupPost
+    signupPost,
+    updateClient
     }

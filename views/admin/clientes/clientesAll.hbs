@@ -13,6 +13,11 @@
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
+
+
+ 
+
+
             <button type="button" class="btn btn-success my-4 ml-auto m-3 px-5 py-2" data-toggle="modal"
                 data-target="#userModal">
                 Agregar Usuario
@@ -44,6 +49,8 @@
                                     <th>Sigma</th>
                                     <th>Email</th>
                                   <th>Role</th>
+                                  <th>Estado</th>
+                                  <th>Accion</th>
 
                                     
                                 </tr>
@@ -55,10 +62,57 @@
                                     <td>{{sigma}}</td>
                                     <td>{{ email }} </td>
                                     <td>{{role}}</td>
-
+                                    <td>{{state}}</td>
+                                    <td><button type="button" class="btn btn-success my-4 ml-auto m-3 px-5 py-2" data-toggle="modal"
+                data-target="#editModal{{_id}}">
+                Editar
+            </button></td>
 
                                     
                                 </tr>
+
+
+
+                    <!-- MODAL AGREGAR VENDEDOR-->
+    <div class="modal inmodal" id="editModal{{_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-laptop modal-icon"></i>
+                    <h4 class="modal-title">Editar Usuario</h4>
+
+                </div>
+                <div class="modal-body">
+                  <form action="/admin/clientes/update/{{_id}}?_method=PUT" method="POST">
+                    <div class="form-group"><label>sigma:</label> <input type="text"
+                            placeholder="" value="{{sigma}}"name="sigma" class="form-control"> </div>
+                    <div class="form-group"><label>Nombre y Apellido:</label> <input type="text"
+                            placeholder="" value="{{name}}"name="name" class="form-control"> </div>
+                    <div class="form-group"><label>Email:</label> <input value="{{email}} "type="email" name="email" placeholder="Ingresar Email"
+                            class="form-control"></div>
+                                <label>Estado:</label>
+                                    <select class="form-control m-b" id="state"  name="state">
+                                         <option  value="activo">Activo</option>
+                                        <option  value="inactivo">Desactivado</option>
+                                    </select>
+                                    
+
+                    <div class="form-group"><label>Password:</label> <input type="password" value="{{password}}" name="password" 
+                            class="form-control"></div>
+                       
+                    
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>                    
                                 {{/each}}
                             </tbody>
                             
@@ -175,3 +229,6 @@
             </div>
         </div>
     </div>
+
+
+
