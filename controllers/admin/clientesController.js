@@ -16,13 +16,15 @@ async function getAll(req, res){
 
  
 async function updateClient(req, res){
+ let newUser = new User();
  const {
     sigma,
     email,
     name,
-    state
+    state,
+    password
   } = req.body;
-  await User.findByIdAndUpdate(req.params.id, {sigma, email, name, state},{new: true});
+  await User.findByIdAndUpdate(req.params.id, {sigma, email, name, state, password: await newUser.encryptPassword(req.body.password)},{new: true});
   req.flash('success_msg', 'Usuario Actualizado');
   res.redirect('/admin/clientes/all');
   
