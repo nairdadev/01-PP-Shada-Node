@@ -196,9 +196,9 @@ async function checkoutPost(req, res) {
       process.env.SENDGRID_KEY
     );
     const msg = {
-      to: "hernanpampa@gmail.com",
-      cc: "adrian.cano.g@gmail.com",
-      from: "adrian.cano.g@gmail.com", // Use the email address or domain you verified above
+      to: "ventascipo@shadasrl.com.ar",
+      cc: "hernanpampa@gmail.com",
+      from: "ventascipo@shadasrl.com.ar", // Use the email address or domain you verified above
       subject: "Nueva orden",
       html: `
    <div class="row">
